@@ -2,11 +2,23 @@
 	
 $(document).ready(function(){
 
-	//declare variables
+	//Declaring Variables
+	var city = "";
+  var state = "";
+  var zip= "";
+  var radius = "";
+  var date = "";
+  var convertedDate;
+  var bounds= new google.maps.LatLngBounds();
+  var latitude;
+  var longitude;
+
+
+	
 	var currentDate= moment().format("YYYY-MM-DD");
-        currentDate+= "..";
-        console.log(currentDate);
-	var bounds = new google.maps.LatLngBounds();
+  currentDate+= "..";
+  console.log(currentDate);
+
 
 	$("#submit").on("click", function(event){
 		event.preventDefault();
@@ -18,12 +30,6 @@ $(document).ready(function(){
         }
 
         marker.length=0;
-
-					var city = "";
-	        var state = "";
-	        var zip= "";
-	        var radius = "";
-	        var date = "";
 
 	        city = $("#cityBox").val().trim();
 	        console.log(city);
@@ -74,6 +80,13 @@ $(document).ready(function(){
 	    console.log(serverResponse.results[i].assetName);
 		  console.log(serverResponse.results[i].activityStartDate);
 	   	
+		  var date= serverResponse.results[i].activityStartDate;
+      console.log(date);
+
+	   	//convert start date from response into a better format( 12 hour clock)
+      convertedDate = moment(date, "YYYY-MM-DDTHH:mm:ss").format("YYYY-MM-DD");
+      console.log(convertedDate);
+
 		
 		$("#searchResults").addClass("animated fadeIn delay1s8ms");
 	  if(serverResponse.results[i].assetName.length > 0){
@@ -98,7 +111,7 @@ $(document).ready(function(){
     }
     if(serverResponse.results[i].activityStartDate.length > 0) {
         var startDate = $("<div class='bColor'>");
-        startDate.html("<p>" + "<span class='activityInfo'>" + "Start Date:  " + "</span>" + serverResponse.results[i].activityStartDate + "</p>");
+        startDate.html("<p>" + "<span class='activityInfo'>" + "Start Date:  " + "</span>" + convertedDate + "</p>");
         $("#searchResults").append(startDate);
         
     }
