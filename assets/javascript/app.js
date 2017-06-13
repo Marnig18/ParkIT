@@ -89,38 +89,38 @@ $(document).ready(function(){
 
 		
 		$("#searchResults").addClass("animated fadeIn delay1s8ms");
-	  if(serverResponse.results[i].assetName.length > 0){
+	  if(serverResponse.results[i].assetName.length > 1){
      		var assetName = $("<div class='bColor'>");
         assetName.html("<p>" + "<span class='activityInfo'>" + "Event Name:  " + "</span>" + serverResponse.results[i].assetName + "</p>");
         $("#searchResults").append(assetName);
     }
-    if (serverResponse.results[i].place.placeName.length > 0) {
+    if (serverResponse.results[i].place.placeName.length > 1) {
         var placeName = $("<div class='bColor'>");
         placeName.html("<p>" + "<span class='activityInfo'>" + "Place Name:  " + "</span>" + serverResponse.results[i].place.placeName + "</p>");
         $("#searchResults").append(placeName);
     }
-    if(serverResponse.results[i].place.addressLine1Txt.length > 0){
+    if(serverResponse.results[i].place.addressLine1Txt.length > 1){
          var address = $("<div class='bColor'>");
         address.html("<p>" + "<span class='activityInfo'>" + "Address:  " + "</span>" + serverResponse.results[i].place.addressLine1Txt + "</p>");
         $("#searchResults").append(address);
     }
-    if(serverResponse.results[i].place.cityName.length > 0){
+    if(serverResponse.results[i].place.cityName.length > 1){
         var cityName = $("<div class='bColor'>");
         cityName.html("<p>" + "<span class='activityInfo'>" + "City:  " + "</span>" + serverResponse.results[i].place.cityName + "</p>");
         $("#searchResults").append(cityName);
     }
-    if(serverResponse.results[i].activityStartDate.length > 0) {
+    if(serverResponse.results[i].activityStartDate.length > 1) {
         var startDate = $("<div class='bColor'>");
         startDate.html("<p>" + "<span class='activityInfo'>" + "Start Date:  " + "</span>" + convertedDate + "</p>");
         $("#searchResults").append(startDate);
         
     }
-    if(serverResponse.results[i].homePageUrlAdr.length > 0) {
+    if(serverResponse.results[i].homePageUrlAdr.length > 1) {
         var siteURL = $("<div class='bColor'>");
         siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=''>" + serverResponse.results[i].homePageUrlAdr + "</a>" + "</p>");
         $("#searchResults").append(siteURL);
     }   
-      if(serverResponse.results[i].registrationUrlAdr.length > 0){
+      if(serverResponse.results[i].registrationUrlAdr.length > 1){
         var urlB = $("<div class='bColor'>");
         urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=''>" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>");
         $("#searchResults").append(urlB);
