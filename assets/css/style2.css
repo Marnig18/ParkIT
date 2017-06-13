@@ -27,7 +27,7 @@ body{
 	border-radius: 8px;
 }
 
-/*Opening Paragraph*/
+/*Opening Description Paragraph*/
 .openingP{
 	text-align: center;
 	font-family: 'Hanalei Fill', cursive;
@@ -36,14 +36,23 @@ body{
 	color: #3e4c2b;
 }
 
-/*Opening Paragraph Header*/
+/*Opening Description Paragraph Header*/
 #babyHeader{
 	font-size: 30pt;
 	text-align: center;
 	font-family: 'Hanalei Fill', cursive;
-	font-size: 22pt;
 	text-shadow: 1px 1px white;
 	color: #3e4c2b;
+}
+
+/*Closing Paragraph Line*/
+#closingP{
+	font-size: 28pt;
+	text-align: center;
+	font-family: 'Hanalei Fill', cursive;
+	text-shadow: 1px 1px white;
+	color: #3e4c2b;
+	margin-top: 0;
 }
 
 /*Search Boxes and Button*/
@@ -64,6 +73,7 @@ label{
 #cityBox, #stateBox, #zipCodeBox, #radiusBox, #startDate{
 	background-color: #afbc8e;
 	font-size: 16px;
+	margin-right: 20px;	
 }
 
 /*Drop Down Box*/

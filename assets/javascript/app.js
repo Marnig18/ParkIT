@@ -3,6 +3,9 @@
 $(document).ready(function(){
 
 	//declare variables
+	var currentDate= moment().format("YYYY-MM-DD");
+        currentDate+= "..";
+        console.log(currentDate);
 	var bounds = new google.maps.LatLngBounds();
 
 	$("#submit").on("click", function(event){
@@ -31,9 +34,9 @@ $(document).ready(function(){
 	        
 	        radius = $("#radiusBox").val().trim();
 	        console.log("radius " + radius);
-	        date = $("#startDate").val().trim();
+	        // date = $("#startDate").val().trim();
 
-	        console.log("date " + date);
+	        // console.log("date " + date);
 	        
 	        activity = $("#activityBox").val();
 	        console.log("activty " + activity);
@@ -46,8 +49,8 @@ $(document).ready(function(){
             category: "event",
             state: abbrState(state),
             radius: radius,
-            per_page:"10",
-            start_date: "2017-06-11..",
+            per_page:"12",
+            start_date: currentDate,
             zip: zip,
         });
 

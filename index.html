@@ -22,9 +22,10 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 		<!-- Link to Delay CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/delay.css">
-
 		<!-- Link to Relative CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style2.css">
+		<!-- Moment.js -->
+		<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 <body>
@@ -38,9 +39,11 @@
 	<div class="container" id="mainContainer">
 		<!-- Explanation of Website -->
 		<div class="row" id="firstSection">
-			<p id="babyHeader">Welcome to Park It!</p>
+			<h1 id="babyHeader">Welcome to Park It!</h1>
 			<p class="openingP">the website that allows you to find an array of outdoor activities wherever you are! Simply fill in the input boxes and hit "Go!" to see the upcoming activities that match your search criteria, the weather for your area, and maps to help you plan your trip.</p> 
-			<p class="openingP">So start your search today and go out and Park It!
+			<p class="openingP">So start your search today and 
+			<br> 
+			<h1 id="closingP">go out and Park It!</h1>
 			</p>
 		</div>
 		<!-- Search Boxes -->
@@ -59,7 +62,7 @@
 	 	 		<!-- Zip Code Search Box -->
 	 	 		<div class="form-group">
     			<label>Zip Code:</label>
-    			<input type="number" class="form-control" id="zipCodeBox" placeholder="Zip Code (Required)">
+    			<input type="number" min="1" class="form-control" id="zipCodeBox" placeholder="Zip Code (Required)">
 	 	 		</div>
 	 	 		<br>
 				<!-- Radius Search Box -->
@@ -67,16 +70,11 @@
     			<label>Radius:</label>
     			<input type="number" min="1" max="100" class="form-control" id="radiusBox" placeholder="In Miles">
 	 	 		</div>
-	 	 		<!-- Start Date -->
-				<div class="form-group">
-    			<label>Start Date:</label>
-    			<input type="date" class="form-control" id="startDate" placeholder="YYYY-MM-DD">
-	 	 		</div>
 				<!-- Activity Dropdown Menu -->
 				<div class="form-group">
     			<label>Activity:</label>
     			<select class="form-control" id="activityBox">
-	    			<option selected disabled hidden id="chooseOne">Choose One:</option>
+	    			<!-- <option selected disabled hidden id="chooseOne">Choose One:</option> -->
 	    			<option value="running">Running</option>
 	    			<option value="cycling">Cycling</option>
 	    			<option value="swimming">Swimming</option>
