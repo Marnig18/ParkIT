@@ -14,7 +14,7 @@ $(document).ready(function(){
 	$("#firstSection").addClass("animated fadeIn delay2s7ms");
 	$("#secondSection").addClass("animated fadeIn delay2s7ms");
 
-	// .addClass to make search results headers fadeIn
+	// .addClass to make search results headers and results divs fadeIn
 	$("#weatherHeader").addClass("animated fadeIn delay3s2ms");
 	$("#activitiesHeader").addClass("animated fadeIn delay3s2ms");
 	$("#mapsHeader").addClass("animated fadeIn delay3s2ms");

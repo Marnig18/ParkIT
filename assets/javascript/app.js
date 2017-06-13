@@ -8,7 +8,15 @@ $(document).ready(function(){
 	$("#submit").on("click", function(event){
 		event.preventDefault();
 
-			    var city = "";
+				//function to remove/reset markers so that the markers don't keep piling up
+        //on every search/submit. 
+        for(var i=0; i<marker.length; i++){
+            marker[i].setMap(null);
+        }
+
+        marker.length=0;
+
+					var city = "";
 	        var state = "";
 	        var zip= "";
 	        var radius = "";
@@ -38,7 +46,7 @@ $(document).ready(function(){
             category: "event",
             state: abbrState(state),
             radius: radius,
-            // per_page:"1",
+            per_page:"10",
             start_date: "2017-06-11..",
             zip: zip,
         });
@@ -55,7 +63,7 @@ $(document).ready(function(){
 	}).done(function(serverResponse){
 	    console.log(serverResponse);
 
-	   for(var i=0; i<10; i++){
+	   for(var i=0; i<serverResponse.results.length; i++){
 
 	    console.log(serverResponse.results[i].place.placeName);
 	    console.log(serverResponse.results[i].place.addressLine1Txt);
@@ -64,38 +72,45 @@ $(document).ready(function(){
 		  console.log(serverResponse.results[i].activityStartDate);
 	   	
 		
-	   	var assetName = $("<div class='bColor'>");
-	    assetName.html("<p>" + "<span class='activityInfo'>" + "Event Name:  " + "</span>" + serverResponse.results[i].assetName + "</p>");
-	    $("#searchResults").append(assetName);
-	    
-      var placeName = $("<div class='bColor'>");
-	    placeName.html("<p>" + "<span class='activityInfo'>" + "Place Name:  " + "</span>" + serverResponse.results[i].place.placeName + "</p>");
-	    $("#searchResults").append(placeName);
-	    
-       var address = $("<div class='bColor'>");
-	    address.html("<p>" + "<span class='activityInfo'>" + "Address:  " + "</span>" + serverResponse.results[i].place.addressLine1Txt + "</p>");
-	    $("#searchResults").append(address);
-    	
-      var cityName = $("<div class='bColor'>");
-	    cityName.html("<p>" + "<span class='activityInfo'>" + "City:  " + "</span>" + serverResponse.results[i].place.cityName + "</p>");
-	    $("#searchResults").append(cityName);
-	   	
-      var startDate = $("<div class='bColor'>");
-	    startDate.html("<p>" + "<span class='activityInfo'>" + "Start Date:  " + "</span>" + serverResponse.results[i].activityStartDate + "</p>");
-	    $("#searchResults").append(startDate);
-	    // var image = $("<img>");
-	    // image.attr("src", serverResponse.results[i].logoUrlAdr);
-	    // $("#searchResults").append(image);
-	    var siteURL = $("<div class='bColor'>");
-	    siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + serverResponse.results[i].homePageUrlAdr + "</p>");
-	    $("#searchResults").append(siteURL);
-	    
-      var urlB = $("<div class='bColor'>");
-      urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + serverResponse.results[i].registrationUrlAdr + "</p>");
-	    $("#searchResults").append(urlB);
-		  
-      var divDivider = $("<div id='border'>");
-		  $("#searchResults").append(divDivider);
+		$("#searchResults").addClass("animated fadeIn delay1s8ms");
+	  if(serverResponse.results[i].assetName.length > 0){
+     		var assetName = $("<div class='bColor'>");
+        assetName.html("<p>" + "<span class='activityInfo'>" + "Event Name:  " + "</span>" + serverResponse.results[i].assetName + "</p>");
+        $("#searchResults").append(assetName);
+    }
+    if (serverResponse.results[i].place.placeName.length > 0) {
+        var placeName = $("<div class='bColor'>");
+        placeName.html("<p>" + "<span class='activityInfo'>" + "Place Name:  " + "</span>" + serverResponse.results[i].place.placeName + "</p>");
+        $("#searchResults").append(placeName);
+    }
+    if(serverResponse.results[i].place.addressLine1Txt.length > 0){
+         var address = $("<div class='bColor'>");
+        address.html("<p>" + "<span class='activityInfo'>" + "Address:  " + "</span>" + serverResponse.results[i].place.addressLine1Txt + "</p>");
+        $("#searchResults").append(address);
+    }
+    if(serverResponse.results[i].place.cityName.length > 0){
+        var cityName = $("<div class='bColor'>");
+        cityName.html("<p>" + "<span class='activityInfo'>" + "City:  " + "</span>" + serverResponse.results[i].place.cityName + "</p>");
+        $("#searchResults").append(cityName);
+    }
+    if(serverResponse.results[i].activityStartDate.length > 0) {
+        var startDate = $("<div class='bColor'>");
+        startDate.html("<p>" + "<span class='activityInfo'>" + "Start Date:  " + "</span>" + serverResponse.results[i].activityStartDate + "</p>");
+        $("#searchResults").append(startDate);
+        
+    }
+    if(serverResponse.results[i].homePageUrlAdr.length > 0) {
+        var siteURL = $("<div class='bColor'>");
+        siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href='#'>" + serverResponse.results[i].homePageUrlAdr + "</a>" + "</p>");
+        $("#searchResults").append(siteURL);
+    }   
+      if(serverResponse.results[i].registrationUrlAdr.length > 0){
+        var urlB = $("<div class='bColor'>");
+        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href='#'>" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>");
+        $("#searchResults").append(urlB);
+    }
+        var divDivider = $("<div id='border'>");
+        $("#searchResults").append(divDivider);
 	}
 
 
@@ -118,7 +133,14 @@ $(document).ready(function(){
 	    	locationsObj["location"+i] = {lat: latitude, lng: longitude}
 
 	    	//content is what will be displayed in the marker infoWindow
-	    	content= '<h3>' + serverResponse.results[i].assetName + "</h3>";
+	    	//content is what will be displayed in the marker infoWindow
+	    	var content='';
+	    	content+= '<h3>' + serverResponse.results[i].assetName + "</h3>";
+	    	content+= '<h4>Home Page: ' + serverResponse.results[i].homePageUrlAdr + '</h4>';
+	    	content+= '<h4>Registration:<a href=' + serverResponse.results[i].registrationUrlAdr + '</a></h4>';
+	    	content+= '<h4>Contact Name: ' + serverResponse.results[i].contactName + '</h4>';
+	    	content+= '<h4> Contact Phone: ' + serverResponse.results[i].contactPhone + '</h4>';
+	    	content+= '<h4> Address: ' + serverResponse.results[i].place.addressLine1Txt + " " + serverResponse.results[i].place.addressLine2Txt+ ", " + serverResponse.results[i].place.stateProvinceCode   + '</h4>';
 
 	    	//extends the bounds of the map with the coordinate
     	 	bounds.extend(locationsObj["location"+i]);
