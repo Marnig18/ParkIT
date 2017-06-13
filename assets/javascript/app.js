@@ -117,12 +117,12 @@ $(document).ready(function(){
     }
     if(serverResponse.results[i].homePageUrlAdr.length > 0) {
         var siteURL = $("<div class='bColor'>");
-        siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href='#'>" + serverResponse.results[i].homePageUrlAdr + "</a>" + "</p>");
+        siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=''>" + serverResponse.results[i].homePageUrlAdr + "</a>" + "</p>");
         $("#searchResults").append(siteURL);
     }   
       if(serverResponse.results[i].registrationUrlAdr.length > 0){
         var urlB = $("<div class='bColor'>");
-        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href='#'>" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>");
+        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=''>" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>");
         $("#searchResults").append(urlB);
     }
         var divDivider = $("<div id='border'>");
