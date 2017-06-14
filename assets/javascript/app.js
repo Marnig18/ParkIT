@@ -1,6 +1,10 @@
 	
-	//Declaring Variables
+
 	
+
+$(document).ready(function(){
+
+		//Declaring Variables
 	var city = "";
   var state = "";
   var zip= "";
@@ -14,8 +18,6 @@
 	var currentDate= moment().format("YYYY-MM-DD");
   currentDate+= "..";
   console.log(currentDate);
-
-$(document).ready(function(){
 
 	$("#submit").on("click", function(event){
 		event.preventDefault();
@@ -115,7 +117,7 @@ $(document).ready(function(){
 	    }
 	    if(serverResponse.results[i].homePageUrlAdr.length > 1) {
 	        var siteURL = $("<div class='bColor'>");
-	        var link = serverResponse.results[i].homePageUrlAdr
+	        var link = serverResponse.results[i].homePageUrlAdr;
 	        console.log(serverResponse.results[i].homePageUrlAdr)
 	        siteURL.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=" + link + ">" + serverResponse.results[i].homePageUrlAdr + "</a>" + "</p>")
 	       
@@ -125,7 +127,7 @@ $(document).ready(function(){
 	    }   
 	      if(serverResponse.results[i].registrationUrlAdr.length > 1){
 	        var urlB = $("<div class='bColor'>");
-	        var link2 = serverResponse.results[i].registrationUrlAdr
+	        var link2 = serverResponse.results[i].registrationUrlAdr;
 	        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=" + link2+ ">" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>")
 	        $("#searchResults").append(urlB);
 	 
