@@ -71,6 +71,13 @@ $(document).ready(function(){
 		}).done(function(serverResponse){
 		    console.log(serverResponse);
 
+		    if (serverResponse.total_results === 0){
+		    	var none = $("<div>");
+		    	none.html("No Results Found");
+		    	$("#searchResults").append(none);
+		    }
+		   else{
+
 		   for(var i=0; i<serverResponse.results.length; i++){
 
 			  console.log(serverResponse.results[i].place.placeName);
@@ -190,7 +197,7 @@ $(document).ready(function(){
 	            })(marker[i],content,infoWindow));   
 		    }	
 
-
+		  }
 
 	    console.log(locationsObj)
 		})
