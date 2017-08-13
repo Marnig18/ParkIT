@@ -135,7 +135,7 @@ $(document).ready(function(){
 	      if(serverResponse.results[i].registrationUrlAdr.length > 1){
 	        var urlB = $("<div class='bColor'>");
 	        var link2 = serverResponse.results[i].registrationUrlAdr;
-	        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=" + link2+ ">" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>")
+	        urlB.html("<p>" + "<span class='activityInfo'>" + "Website:  " + "</span>" + "<a href=" + link2 + ">" + serverResponse.results[i].registrationUrlAdr + "</a>" + "</p>")
 	        $("#searchResults").append(urlB);
 	 
 	    }
